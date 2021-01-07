@@ -4,7 +4,17 @@ function convertToRoman(num) {
 
  let hold = ""; // variable for holding roman numeral as the for loop iterates through each digit
  let numBefore = 0;
-
+if(num > 3999){
+    //The for loop below is for any number greater than 3999 since after 3999 it will be 4000, 5000, 6000 and it will just continue to add M since there's no other roman numeral greater than M. 
+    let letterM = num.toString().charAt(0);
+    console.log("The digit that's greater than 3 is " + letterM);
+    // It will do the loop until it reaches 3, then it exit out of the loop and replace the letterM with 3. So if you have 5999, then it will do the loop add MM to hold, then replace 5999 with 3999 and do the rest of the code to become MMMMMCMXCIX
+    for(let i = 3; i < letterM; i++){ 
+        hold += "M";
+    }
+    console.log(hold);
+    num = parseInt(num.toString().replace(letterM, "3"));
+}
 // for loop getting the position of digit which will make a num like 123 to 100 20 and 3
 for(let i = 0; i < num.toString().length; i++){
     let numOfZeroes = num.toString().length - (i + 1);
